@@ -2,14 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    # dynamic data - for each user they have their own data 
-    # make classes 
-    context = {
-        # dictionary 
-        'name' : 'Patrick', 
-        'age': '23', 
-        'nationality': 'British'
-    }
-    name = 'Patrick'
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
+
+def counter(request): 
+    words = request.POST['words']
+    word_count = len(words.split())
+    return render(request, 'counter.html', {'amount': word_count})
  
